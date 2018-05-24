@@ -94,6 +94,17 @@ public class DynamicQueryImpl implements DynamicQuery {
 	}
 
 	@Override
+	public void batchInsert(List<Object> entitys) {
+		for(int i = 0; i < entitys.size(); i++) {
+			em.persist(entitys.get(i));
+			if(i % 30 == 0) {
+				em.flush();
+				em.clear();
+			}
+		}
+	}
+
+	@Override
 	public Object[] nativeQueryArray(String nativeSql, Object... params) {
 		return (Object[]) createNativeQuery(nativeSql, params).getSingleResult();
 	}

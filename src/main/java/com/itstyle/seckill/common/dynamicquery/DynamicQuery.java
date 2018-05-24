@@ -77,4 +77,10 @@ public interface DynamicQuery {
 	 * @return
 	 */
 	int nativeExecuteUpdate(String nativeSql, Object... params);
+
+	/**
+	 * 批量插入
+	 * @param entitys
+	 */
+	void batchInsert(List<Object> entitys);
 }

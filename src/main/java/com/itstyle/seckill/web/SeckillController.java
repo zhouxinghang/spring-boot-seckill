@@ -49,14 +49,16 @@ public class SeckillController {
 			};
 			executor.execute(task);
 		}
+		long  seckillCount = 0;
 		try {
 			Thread.sleep(10000);
-			Long  seckillCount = seckillService.getSeckillCount(seckillId);
+			 seckillCount = seckillService.getSeckillCount(seckillId);
 			LOGGER.info("一共秒杀出{}件商品",seckillCount);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		return Result.ok();
+//		return Result.ok();
+		return Result.ok().put("msg", "一共秒杀出" + seckillCount + "件商品");
 	}
 	@ApiOperation(value="秒杀二(程序锁)",nickname="科帮网")
 	@PostMapping("/startLock")

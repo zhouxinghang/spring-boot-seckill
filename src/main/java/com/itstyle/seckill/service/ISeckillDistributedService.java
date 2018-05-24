@@ -18,6 +18,8 @@ public interface ISeckillDistributedService {
 	 * @return
 	 */
 	Result startSeckilZksLock(long seckillId,long userId);
+
+	Result startSeckilRedisLock2(long seckillId, long userId);
 	
 	/**
 	 * 秒杀 二 多个商品
